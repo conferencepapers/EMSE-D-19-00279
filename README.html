@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2020-12-03 Thu 11:21 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Structure of Replication Package.</title>
+<meta name="generator" content="Org mode">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://taopeng.me/org-notes-style/css/notes.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<header>
+<h1 class="title">Structure of Replication Package.</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga52ac62">Structure</a>
+<ul>
+<li><a href="#orgc4ef571"><i>OpenStack:</i> Main study usecase</a></li>
+<li><a href="#org8e914bd"><i>Mailing List Archives for Generalization study</i></a></li>
+<li><a href="#org55a81ef">Replication package</a></li>
+<li><a href="#org5ff76f4"><i>Qualitative Analysis</i></a></li>
+<li><a href="#orga0b0aec"><i>quantitative-analysis</i></a></li>
+<li><a href="#org95dc488">Scripts</a></li>
+<li><a href="#org1e97fa9">Supporting files</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-orga52ac62" class="outline-2">
+<h2 id="orga52ac62">Structure</h2>
+<div class="outline-text-2" id="text-orga52ac62">
+</div>
+<div id="outline-container-orgc4ef571" class="outline-3">
+<h3 id="orgc4ef571"><i>OpenStack:</i> Main study usecase</h3>
+<div class="outline-text-3" id="text-orgc4ef571">
+<dl class="org-dl">
+<dt>OpenStack Releases</dt><dd>the release team maintains the IRC chat logs archives from 2015
+to present, see <a href="http://eavesdrop.openstack.org/meetings/releaseteam/">releaseteam</a></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org8e914bd" class="outline-3">
+<h3 id="org8e914bd"><i>Mailing List Archives for Generalization study</i></h3>
+<div class="outline-text-3" id="text-org8e914bd">
+<dl class="org-dl">
+<dt><i>Gnome</i></dt><dd>we extracted archives from the <a href="https://mail.gnome.org/archives/release-team/">release team</a></dd>
+<dt>Eclipse</dt><dd>we also extracted archives from the eclipse
+<a href="https://www.eclipse.org/lists/platform-releng-dev/index.html">release team</a></dd>
+</dl>
+</div>
+</div>
+
+
+<div id="outline-container-org55a81ef" class="outline-3">
+<h3 id="org55a81ef">Replication package</h3>
+<div class="outline-text-3" id="text-org55a81ef">
+<p>
+<i>This repo contains four directories (qualitative<sub>analysis</sub></i>, <i>quantitative<sub>analysis</sub></i>,
+<i>scripts</i>, supporting-files), and of course this index file (README.org [.html]).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5ff76f4" class="outline-3">
+<h3 id="org5ff76f4"><i>Qualitative Analysis</i></h3>
+<div class="outline-text-3" id="text-org5ff76f4">
+<p>
+All the useful materials that we used in analyzing the qualitative data
+</p>
+<dl class="org-dl">
+<dt><i>qualitative<sub>analysis</sub></i></dt><dd>contains the downloaded excepts and coding
+from <b>Dedoose</b> and the extra coding with the Ocata release to
+triangulate our findings of the previously studied releases (Mitaka and Queens)</dd>
+
+<dt><i>Themes<sub>emerging</sub><sub>from</sub><sub>corpus.xls</sub></i></dt><dd>this file was downloaded from Dedoose, it shows the logs
+of the weekly release team meeting to the left, and next to it the
+occurrence of a given code, in the chart to the right, a visualization
+of our high-level codes (<i>y-axis</i>) and their frequency (<i>x-axis</i>).</dd>
+
+<dt><i>code-exo-wk-meeting.png</i></dt><dd>a screenshot showing how we use Dedoose to
+do the qualitative coding</dd>
+
+<dt><i>detailedExcerpts.xlsx</i></dt><dd>textual view of the downloaded file from
+Dedoose, showing each section of the IRC logs file and how the labels were applied.</dd>
+
+<dt><i>Example-high-level-inductive-coding-release.html</i></dt><dd>Example of the
+codes that we used in this study.</dd>
+
+<dt><i>Example-how-we-implemented-inductive-coding-in-Dedoose.docx</i></dt><dd>sample
+on how we apply deductive coding on the corpus.</dd>
+
+<dt><i>HighLevel-Codes.csv</i></dt><dd>our high-level codes downloaded from Dedoose,
+showing parent and children&rsquo;s level</dd>
+
+<dt><i>Affinity-release-sync.jpg</i></dt><dd>Outcome after applying qualitative coding
+and forming high level themes, we use an affinity diagram to
+categorize the different themes that emerges.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orga0b0aec" class="outline-3">
+<h3 id="orga0b0aec"><i>quantitative-analysis</i></h3>
+<div class="outline-text-3" id="text-orga0b0aec">
+<p>
+This folder contains three sub-folder including the cleaned dataset that
+we used to generate both our results of ecosystem release synchronization.
+</p>
+
+<ul class="org-ul">
+<li><i>Openstack<sub>releases</sub><sub>model.csv</sub></i> and <i>models.csv</i>:: show the extracted release models that
+all projects at OpenStack have been using from creation.</li>
+
+<li>The remaining folders: eclipse, and gnome are the datasets of the</li>
+</ul>
+<p>
+release activitied that we found in those ecosystems to generalize our
+study. Also, the script folder contains the scripts that we use to
+extract the logs, and extract the deliverable from the release repo.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org95dc488" class="outline-3">
+<h3 id="org95dc488">Scripts</h3>
+<div class="outline-text-3" id="text-org95dc488">
+<p>
+this sub-folder contains the scripts to extract the datasets for the quantitative analysis
+</p>
+
+<ul class="org-ul">
+<li>First, we extracted the logs with this <i>1.mining-irc-log.sh</i></li>
+<li>Next, we extracted the google group discussion with <i>2.crawler.sh</i></li>
+<li>Then, we used the list of Openstack projects in a .ymal file and parse
+all the official projects that the release team manages with
+<i>3.yaml<sub>projects</sub><sub>parser.py</sub></i></li>
+<li>Next, mined the release team repo to extract information about
+deliverable and synchronization strategies <i>with 4.show-delivrables.sh</i></li>
+</ul>
+<p>
+an exported jupyter notebook, which we included here as in <i>.html</i> format
+(<i>6.jupyter-notebook.html</i>).
+</p>
+<ul class="org-ul">
+<li>Last, use a jupyter notebook (6.jupyter-notebook.html) with python3.8
+to analyze quantitatively the studied subject.</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org1e97fa9" class="outline-3">
+<h3 id="org1e97fa9">Supporting files</h3>
+<div class="outline-text-3" id="text-org1e97fa9">
+<p>
+contain example of .ymal files for two core-projects in a given release
+(Rocky)m using different release model and also shows how the
+cycle-highlight management was integrated on the release process.
+</p>
+
+
+
+<p class="verse">
+├── README.html<br>
+├── qualitative<sub>analysis</sub><br>
+│   ├── Affinity<sub>diagram</sub><sub>emse.jpg</sub><br>
+│   ├── Chart.xls<br>
+│   ├── Example<sub>high</sub><sub>level</sub><sub>inductive</sub><sub>coding</sub><sub>release.html</sub><br>
+│   ├── Example<sub>how</sub><sub>we</sub><sub>implemented</sub><sub>inductive</sub><sub>coding</sub><sub>in</sub><sub>Dedoose.docx</sub><br>
+│   ├── HighLevel<sub>Codes.csv</sub><br>
+│   ├── Ocata-coding<br>
+│   │   ├── Dedoose\ Media<sub>2020</sub><sub>7</sub><sub>20</sub><sub>827.xls</sub><br>
+│   │   ├── DedooseChartExcerpts<sub>2020</sub><sub>7</sub><sub>13</sub><sub>241.xlsx</sub><br>
+│   │   ├── DedooseChartExcerpts<sub>2020</sub><sub>7</sub><sub>20</sub><sub>827.xlsx</sub><br>
+│   │   ├── DedooseCodesExport<sub>2020</sub><sub>7</sub><sub>20</sub><sub>826.xlsx</sub><br>
+│   │   └── Ocata<sub>coding</sub><sub>validation</sub><sub>summary.pdf</sub><br>
+│   ├── code-count.csv<br>
+│   ├── code-exo-wk-meeting.png<br>
+│   ├── detailedExcerpts.xlsx<br>
+│   ├── release<sub>planning.docx</sub><br>
+│   └── result<sub>first</sub><sub>round</sub><sub>inductive</sub><sub>coding</sub><sub>of</sub><sub>11</sub><sub>logs.pdf</sub><br>
+├── quantitative<sub>analysis</sub><br>
+│   ├── eclipse<sub>data</sub><br>
+│   │   ├── IMG<sub>pdfs</sub><br>
+│   │   │   ├── a1.pdf<br>
+│   │   │   ├── a10.pdf<br>
+│   │   │   ├── a2.pdf<br>
+│   │   │   ├── a3.pdf<br>
+│   │   │   ├── a4.pdf<br>
+│   │   │   ├── a5.pdf<br>
+│   │   │   ├── a6.pdf<br>
+│   │   │   ├── a7.pdf<br>
+│   │   │   ├── a8.pdf<br>
+│   │   │   └── a9.pdf<br>
+│   │   ├── a1.planing<sub>tracking</sub><sub>gnome.csv</sub><br>
+│   │   ├── a1.release<sub>strategy.csv</sub><br>
+│   │   ├── a10.highligh<sub>eclipse.csv</sub><br>
+│   │   ├── a2.tracking<sub>eclipse.csv</sub><br>
+│   │   ├── a3.dependency<sub>eclipse.csv</sub><br>
+│   │   ├── a4.liaisons.csv<br>
+│   │   ├── a5.comm<sub>eclipse.csv</sub><br>
+│   │   ├── a6.stabilization<sub>eclipse.csv</sub><br>
+│   │   ├── a7.automation.csv<br>
+│   │   ├── a8.consolidation.csv<br>
+│   │   ├── a9.stable<sub>eclipse.csv</sub><br>
+│   │   └── eclipse<sub>releases.csv</sub><br>
+│   ├── gnome<sub>data</sub><br>
+│   │   ├── IMG<sub>pdfs</sub><br>
+│   │   │   ├── a1.pdf<br>
+│   │   │   ├── a10.pdf<br>
+│   │   │   ├── a2.pdf<br>
+│   │   │   ├── a3.pdf<br>
+│   │   │   ├── a4.pdf<br>
+│   │   │   ├── a5.pdf<br>
+│   │   │   ├── a6.pdf<br>
+│   │   │   ├── a7.pdf<br>
+│   │   │   ├── a8.pdf<br>
+│   │   │   └── a9.pdf<br>
+│   │   ├── a1.release<sub>strategies.csv</sub><br>
+│   │   ├── a10.gnome<sub>cycle.csv</sub><br>
+│   │   ├── a2.planing<sub>tracking.csv</sub><br>
+│   │   ├── a3.dependency.csv<br>
+│   │   ├── a4.trusted<sub>liaisons.csv</sub><br>
+│   │   ├── a5.communication.csv<br>
+│   │   ├── a6.stabilization.csv<br>
+│   │   ├── a7.tooling<sub>and</sub><sub>automation.csv</sub><br>
+│   │   ├── a8.central<sub>repo.csv</sub><br>
+│   │   └── a9.stable<sub>m.csv</sub><br>
+│   └── openstack<br>
+│       ├── models.csv<br>
+│       ├── openstack<sub>releases</sub><sub>model.csv</sub><br>
+│       └── projects.csv<br>
+├── scripts<br>
+│   ├── 1.mining<sub>irc</sub><sub>log.sh</sub><br>
+│   ├── 2.crawler.sh<br>
+│   ├── 3.yaml<sub>projects</sub><sub>parser.py</sub><br>
+│   ├── 4.show<sub>delivrables.sh</sub><br>
+│   ├── 5.reading.sh<br>
+│   ├── 6.jupyter<sub>notebook.html</sub><br>
+│   └── INPUT<br>
+│       └── projects.yaml<br>
+└── supporting<sub>files</sub><br>
+&#xa0;&#xa0;&#xa0;&#xa0;├── sahara-model.pdf<br>
+&#xa0;&#xa0;&#xa0;&#xa0;└── swift-model.pdf<br>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2020-12-03 Thu 11:21</p>
+</div>
+</body>
+</html>

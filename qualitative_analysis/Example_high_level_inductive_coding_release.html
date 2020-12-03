@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Matching our code and  excerpts with the log files</title>
+<!-- 2020-08-09 Sun 17:12 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-12"><h1 class="title">Matching our code and  excerpts with the log files</h1>
+<p>
+&#x2013; Excerpts of code analyzed, links to each section points to the specific resource where the code was is extracted.
+</p>
+
+
+
+<p class="verse">
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-06-05-13.01.log.html">Code01::Automation/tool support management</a><br >
+<i><b>Example:01</b></i><br >
+13:04:47 &lt;dhellmann&gt; milestone.sh needs some work to be more idempotent<br >
+13:04:59 &lt;ttx&gt; I&rsquo;ll move the remaining tasks to our main wiki page<br >
+13:05:13 &lt;ttx&gt; agreed on idempotency<br >
+13:05:30 &lt;ttx&gt; our mix of shell and python isn&rsquo;t ideal for that though<br >
+13:05:43 &lt;ttx&gt; which is why I deferred that task forever now :)<br >
+13:05:46 &lt;dhellmann&gt; yeah, I was thinking about that last week when thinking about the automation tool<br >
+13:06:12 &lt;dhellmann&gt; I might rewrite release_postversion.sh in python, converting bits of it to a library that makes reuse easier<br >
+13:06:14 &lt;ttx&gt; We&rsquo;ll come up with some python library to do the tagging and all<br >
+13:06:42 &lt;ttx&gt; I suspect there is some git python library we can use to avoid shelling out from python<br >
+13:06:58 &lt;dhellmann&gt; we might even be able to reuse parts of pbr<br >
+13:07:14 &lt;ttx&gt; yep, this is more an enhacement once we cover the urgent stuff<br >
+<br >
+<br >
+<i><b>Example:02</b></i><br >
++ <i>openstack-release-log/releaseteam.2016-01-08-14.00.log.html/</i><br >
+<br >
+14:21:24 &lt;dhellmann&gt; #topic status of automation work<br >
+14:22:06 &lt;dhellmann&gt; with the changes that just merged today, we have all of our tools in place and it&rsquo;s possible to release and announce a new dist with a single command manually<br >
+14:22:24 &lt;dhellmann&gt; I spoke with the infra team this week at their meeting, and there are 2 things I took awaywo<br >
+14:22:45 &lt;dhellmann&gt; first, we&rsquo;re blocked going much further with automation until they have the key management spec implemented<br >
+14:22:59 &lt;dims&gt; ok<br >
+14:23:02 &lt;dhellmann&gt; that&rsquo;s a priority for them, so I expect progress, but we&rsquo;ll be doing releases by hand for a while longer<br >
+14:23:34 &lt;dhellmann&gt; second, because the release tools will run on the secure node, it&rsquo;s likely they&rsquo;re going to ask us to move them into the project-config repo in the jenkins scripts part of the tree<br >
+14:23:52 &lt;dhellmann&gt; that will make changing them a little more difficult, since we&rsquo;ll need to get infra to approve<br >
+14:24:11 &lt;dhellmann&gt; we&rsquo;ll see if that turns out to be an issue<br >
+14:24:54 &lt;dims&gt; interesting<br >
+14:25:44 &lt;dhellmann&gt; the release script install the launchpad lib stuff, so I&rsquo;ll have to see how they feel about that<br >
+14:25:51 &lt;dims&gt; is this just so they are aware of the changes we are doing?<br >
+14:25:54 &lt;dhellmann&gt; I&rsquo;ll also see if we can get +2 on that part of the tree<br >
+14:26:14 &lt;ttx&gt; dhellmann: could we publish the tools on Pypi and could they rely on that ?<br >
+14:26:16 &lt;dhellmann&gt; well, it came up in the context of security for the code that runs there on the node<br >
+14:26:30 &lt;ttx&gt; ah<br >
+<br >
+<i><b>Example:03</b></i><br >
+14:12:37 &lt;ttx&gt; dhellmann: <a href="http://releases.openstack.org/meiji/index.html">http://releases.openstack.org/meiji/index.html</a><br >
+14:12:51 &lt;ttx&gt; didn&rsquo;t we say we would collapse the a1 -&gt; rc2 by release time ?<br >
+14:12:52 &lt;dhellmann&gt; we would have had reno output in the email, too, if the default for &ldquo;collapse&rdquo; was true<br >
+14:13:13 &lt;dhellmann&gt; I thought we were only going to do that in the release notes?<br >
+14:13:25 &lt;dhellmann&gt; you want to do it on the releases page, too?<br >
+14:13:39 &lt;ttx&gt; dhellmann: on that page you want &ldquo;earliest version&rdquo; to be 0.0.1, not the a1<br >
+14:13:55 &lt;dhellmann&gt; ah, true<br >
+14:14:04 &lt;dhellmann&gt; ok, I&rsquo;ll put that on my list, too<br >
+14:14:05 &lt;ttx&gt; since those are considered temporary production artifacts<br >
+14:14:31 &lt;dhellmann&gt; so is it just the earliest version that should change, or should we hide the pre-releases in the detail list, too?<br >
+14:14:49 &lt;ttx&gt; I think we should hide them from the detail list too<br >
+14:15:00 &lt;ttx&gt; They can survive in the yaml for historical purposes<br >
+14:15:19 &lt;ttx&gt; alternatively we could clean up the yaml<br >
+14:15:30 &lt;ttx&gt; since we are the ones promoting the latest RC to release<br >
+14:15:37 &lt;dhellmann&gt; cleaning up the yaml would definitely be the simplest answer<br >
+14:15:43 &lt;dhellmann&gt; although it&rsquo;s more labor<br >
+14:15:49 &lt;ttx&gt; after all the hisotory lives in the tags<br >
+14:15:52 &lt;dhellmann&gt; let me see what I can do to automate it<br >
+14:16:03 &lt;ttx&gt; well, we could have a script that proposes the promotion<br >
+14:16:30 &lt;ttx&gt; some kind of promote_latest_RC_to_final nova meiji<br >
+14:16:35 &lt;dhellmann&gt; yeah, once I figure out the logic for ignoring the pre-releases we might as well do it in the rendering<br >
+14:16:47 &lt;dhellmann&gt; I have it in reno, I just need to adapt it for this case<br >
+14:17:13 &lt;ttx&gt; ok, that is all I could find<br >
+14:17:15 &lt;dhellmann&gt; so if that&rsquo;s it, we can move on<br >
+14:17:34 &lt;dhellmann&gt; #topic process releases requests backlog<br >
+14:17:48 &lt;dhellmann&gt; I can do this after the meeting, since we have some other things to discuss<br >
+14:18:01 &lt;ttx&gt; Sure, let&rsquo;s process it after meeting<br >
+14:18:11 &lt;dhellmann&gt; #topic summit space needs<br >
+<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/releaseteam.2015-11-13-14.12.log.html">Code02::Deliverable consolidation</a><br >
+<i><b>Example:01</b></i><br >
+14:29:10 &lt;dhellmann&gt; would we move release notes under this domain, too? or just the content of the releases repository?<br >
+14:29:14 &lt;ttx&gt; it&rsquo;s also easier to communicate, since apparently a lot of people still don&rsquo;t know about it (including PTLs)<br >
+14:29:46 &lt;ttx&gt; dhellmann: both options are on the table. I don&rsquo;t mind if the notes end up in docs and are linked from the main site<br >
+14:30:58 &lt;dhellmann&gt; ok, AJaeger just finished making the publishing job for the notes work to the site where it&rsquo;s going now. I suppose moving them is a relatively simple config change, once we have the new domain set up.<br >
+14:31:07 &lt;dhellmann&gt; I could see them continuing to live in docs.o.o though<br >
+14:31:50 &lt;dhellmann&gt; #action dhellmann check with infra about the difficulty of moving the release repo publish site to a new domain<br >
+14:31:56 &lt;ttx&gt; We could also use a slightly-less doc-oriented sphinx theme<br >
+14:32:29 &lt;ttx&gt; i.e. less table of contents, less &ldquo;releases 0.0.1.dev420 documentation&rdquo;<br >
+14:32:30 &lt;dhellmann&gt; yes, I agree. it would be nice to have a good looking site.<br >
+14:32:38 &lt;ttx&gt; not urgent at all<br >
+14:32:59 &lt;ttx&gt; there is the question of whether we should keep the instructions there<br >
+14:33:17 &lt;dhellmann&gt; we could put those in the project-team-guide<br >
+14:33:18 &lt;ttx&gt; they sounds like they are for a different audience<br >
+14:33:21 &lt;ttx&gt; right<br >
+14:33:50 &lt;ttx&gt; anyway, that&rsquo;s not urgent work. But would be great to have it done for mitaka release<br >
+14:34:05 &lt;dhellmann&gt; ok, I&rsquo;ll add it to the plan<br >
+14:34:21 &lt;dhellmann&gt; #action dhellmann add details about moving release publishing to the mitaka plan<br >
+14:34:21 &lt;ttx&gt; cool, happy to help with some bots of that effort<br >
+14:34:25 &lt;ttx&gt; or bits<br >
+14:34:33 &lt;dhellmann&gt; k<br >
+<br >
+<i><b>Example:02</b></i><br >
+13:12:46 &lt;ttx&gt; On Thursday I consolidate the release pages on Launchpad, which takes nearly forever<br >
+13:12:52 &lt;ttx&gt; and retag<br >
+13:12:56 &lt;ttx&gt; (which doesn&rsquo;t take that long)<br >
+13:13:08 &lt;ttx&gt; so Thursday is basically too late for respins<br >
+13:13:20 &lt;ttx&gt; Wednesday is the very last moment for that<br >
+13:13:45 &lt;ttx&gt; I&rsquo;ll try to get most of the launchpad foo done in the EU morning<br >
+13:14:12 &lt;ttx&gt; I&rsquo;ll say that getting rid of that would remove a lot of work from release day.<br >
+13:14:20 &lt;dhellmann&gt; when you say &ldquo;consolidate&rdquo; what does that mean?<br >
+13:14:23 &lt;ttx&gt; but then I digged that hole<br >
+13:14:52 &lt;ttx&gt; well, it&rsquo;s about moving everything that&rsquo;s been done on milestones to the final release page, by retargeting bugs and blueprints<br >
+13:14:57 &lt;dhellmann&gt; ah<br >
+13:15:06 &lt;ttx&gt; so that &ldquo;the release&rdquo; shows everything that&rsquo;s been done, instead of nothing<br >
+13:15:33 &lt;dhellmann&gt; ah, right, I forgot you do that because we ended up not doing it for oslo<br >
+13:16:03 &lt;ttx&gt; let me find some pointers<br >
+13:16:14 &lt;ttx&gt; just in case<br >
+13:16:26 &lt;ttx&gt; <a href="https://wiki.openstack.org/wiki/ReleaseTeam/How_To_Release#Final_release_2">https://wiki.openstack.org/wiki/ReleaseTeam/How_To_Release#Final_release_2</a><br >
+13:17:15 &lt;ttx&gt; Anything I&rsquo;m missing ?<br >
+13:17:54 &lt;dhellmann&gt; I think that&rsquo;s it. I couldn&rsquo;t tell just from scrollback whether we were waiting for any critical issues other than the requests requirement block<br >
+13:17:58 &lt;ttx&gt; So.. back on the topic of the requests blacklist<br >
+13:18:02 * flaper87 reads backlog<br >
+<br >
+<br >
+<br >
+14:39:48 &lt;dhellmann&gt; I just wanted folks on the release team to be aware that this is a new branch type. smcginnis and I picked the name yesterday. So far only Cinder uses it, but if other teams want to do something similar we&rsquo;d want the same name type<br >
+14:40:02 &lt;ttx&gt; Still not a big fan of having untested branches in our official repos, but meh<br >
+14:40:18 &lt;dhellmann&gt; basically, this is a branch created from stable/$series at a point close to when the stable branch goes dormant, to give vendors a central place to collaborate on long-lived driver support<br >
+14:40:26 &lt;ttx&gt; untested/$series would make it clearer<br >
+14:41:01 &lt;dhellmann&gt; yeah, we talked about untested/driverfixes/$series as the name but that felt different from the other patterns we have with just 2 levels in the name<br >
+14:41:24 &lt;dhellmann&gt; and I think the idea is that only changes to drivers would be allowed in the branch, so we wanted to highlight that<br >
+14:41:33 &lt;ttx&gt; also discourages them to collaborate on stable branches a bit<br >
+14:41:34 &lt;smcginnis&gt; ttx, dhellmann: Still time to change it I suppose. untested/mitaka would be OK with me, though I do like the descriptive name of driverfixes.<br >
+14:41:40 &lt;smcginnis&gt; dhellmann: +1<br >
+14:41:52 &lt;ttx&gt; smcginnis: yeah, untested only partially captures the idea<br >
+14:42:12 &lt;dhellmann&gt; ttx: I thought the opposite &#x2013; if they get used to collaborating on these branches, maybe they&rsquo;ll be encouraged to also work on the stable branches before the driverfixes branch is created<br >
+14:42:36 &lt;ttx&gt; who has +2 on driverfixes/*<br >
+<br >
+<br >
+<br >
+14:30:23 &lt;ttx&gt; ACLs cover stable/*, we can&rsquo;t have them target stable/latest<br >
+14:30:26 &lt;dhellmann&gt; I suppose resurrecting that is another option to consider<br >
+14:30:43 &lt;ttx&gt; but yeah, we can brainstorm<br >
+14:30:52 &lt;dhellmann&gt; sure we can, we just have to replace the * with the series name, right?<br >
+14:31:04 &lt;ttx&gt; how do you do that without updating the acl ?<br >
+14:31:38 &lt;dhellmann&gt; we could add those acls at any point, which would remove the project-config patch from the critical path for making the release happen<br >
+14:31:48 &lt;dhellmann&gt; which would at least be a timing improvement over what we have now<br >
+14:32:04 &lt;ttx&gt; oh sure, you can create the acl in adva,ce<br >
+14:32:17 &lt;ttx&gt; you still need to remove it postrelease though<br >
+14:32:22 &lt;dhellmann&gt; I guess we couldn&rsquo;t do it in one place, though, since it would be a team-specific group<br >
+14:32:41 &lt;ttx&gt; I was surprised how many people asked for it just after release<br >
+14:32:43 &lt;dhellmann&gt; hmm, I thought we would just change the members<br >
+14:33:08 &lt;ttx&gt; Ah. You would create different groups for stable/newton, stable/ocata<br >
+14:33:12 &lt;dhellmann&gt; right<br >
+14:33:21 &lt;ttx&gt; and leave them all in the acl<br >
+14:33:31 &lt;dhellmann&gt; yeah, or clean them up when we delete old branches<br >
+14:33:32 &lt;ttx&gt; and/or consolidate once per cycle<br >
+14:33:38 &lt;ttx&gt; when you add the new one<br >
+14:33:44 &lt;dhellmann&gt; sure<br >
+<br >
+<br >
+<a href="https://github.com/foundjem/research/blob/master/meetings-log-html/openstack-release-log/releaseteam.2016-07-08-14.00.log.html">Code03::Dependency/constraint management</a><br >
+<i><b>Example:01</b></i><br >
+14:37:38 &lt;dhellmann&gt; fungi : so the issue is that the URL for the constraints file needs to change after a stable branch is created?<br >
+14:37:48 &lt;fungi&gt; summary is that projects consuming constraints need to adjust the url of the constraints file they&rsquo;re downloading when they branch. it doesn&rsquo;t affect automation, but it does affect individual developers running tox locally. the question is basically when and how to update that as part of the release process<br >
+14:38:05 &lt;fungi&gt; (and whether, i suppose)<br >
+14:38:27 * dhellmann imagines ttx wearing a tricorne<br >
+14:38:52 &lt;dhellmann&gt; fungi : that sounds like something we could solve with an apache redirect<br >
+14:39:08 &lt;fungi&gt; i&rsquo;m not following<br >
+14:39:34 &lt;fungi&gt; how does teh redirect know which branch of the constraints file to send them to?<br >
+14:39:38 &lt;dhellmann&gt; if we set up a URL for something.openstack.org/constraints/$series that points to the actual file, we can change the redirect with one patch<br >
+14:40:05 &lt;dhellmann&gt; alternately instead of hard-coding a url in the tox file, we could have a little tool that knows how to build the url based on the current branch (maybe reading the .gitreview file?)<br >
+14:40:14 &lt;fungi&gt; well, you still need to change $series in those repos though<br >
+14:40:34 &lt;dhellmann&gt; true<br >
+14:40:42 &lt;dhellmann&gt; so reading the .gitreview file?<br >
+14:40:43 &lt;fungi&gt; yeah, that was an alternative proposal, add more scripts to be copied around between projects that know how to retrieve teh right constraints file<br >
+14:40:46 &lt;dhellmann&gt; that already has the series in it<br >
+14:41:05 &lt;dhellmann&gt; or something that can be pip installed<br >
+14:41:23 &lt;fungi&gt; concern there was further complicating tox.ini or adding wrappers to everyone&rsquo;s test runner )e.g. reintroducing run_tests.sh basically)<br >
+14:42:03 &lt;fungi&gt; having something pip-installable probably introduces some circular logic we&rsquo;d have to break, and means multiple pip install stages<br >
+14:42:03 &lt;dhellmann&gt; does tox.ini support interpolation using other values in the file?<br >
+14:42:13 &lt;dhellmann&gt; I guess we could extend the branching script to modify tox.ini<br >
+14:42:40 &lt;fungi&gt; tox.ini supports parameters which can either be defined in the tox.ini or passed as envvars when calling tox or as parameters on the command-line, afaik<br >
+14:43:16 &lt;dhellmann&gt; so if we have a SERIES=X parameter in the file, that makes it easier for a script to modify<br >
+14:43:44 &lt;fungi&gt; yep, we could certainly make the automated editing of tox.ini easier and less accident-prone<br >
+14:43:52 &lt;dhellmann&gt; then we just have to deal with the ordering of branches in projects vs. requirements<br >
+14:44:05 &lt;fungi&gt; but &ldquo;release tools adjusting tox.ini&rdquo; was still basically the simplest solution anybody settled on<br >
+<br >
+<i><b>Example:02</b></i><br >
+13:20:27 &lt;ttx&gt; dhellmann: in particular, my impression is that the system is designed to work with a single channel of releases<br >
+13:20:31 &lt;dhellmann&gt; if we don&rsquo;t create stable branches, we need to have test jobs for changes to master versions of all of the libraries running against stable versions of the server code<br >
+13:21:34 &lt;dhellmann&gt; and if we have that, we need some sort of quick response plan for the day a team is blocked making changes because we&rsquo;ve introduced an incompatible dependency in master so that the master version of the lib no longer works with the stable version of the app &#x2013; that will happen, it happens all the time<br >
+13:21:37 &lt;ttx&gt; dhellmann: I think we need stable branches. Otherwise you need to branch whenever the library starts to implement changes that don&rsquo;t work with the previous release<br >
+13:21:44 &lt;dhellmann&gt; right<br >
+13:21:55 &lt;ttx&gt; either to mark that beforehand<br >
+13:21:56 &lt;dhellmann&gt; ok, I thought you were saying we didn&rsquo;t need them<br >
+13:22:05 &lt;sdague&gt; so, it&rsquo;s not a terrible thing to make libraries have that level of compatibility<br >
+13:22:07 &lt;ttx&gt; easier*<br >
+13:22:23 &lt;sdague&gt; that just means interfaces need a couple cycles to be dropped<br >
+13:22:34 &lt;ttx&gt; dhellmann: no, I&rsquo;m surprised to discover lifeless thinks we don&rsquo;t need them.<br >
+13:23:03 &lt;dhellmann&gt; sdague: the issue is not usually with our code (though that does certainly come up), it&rsquo;s with wanting to add a dependency on a new thing (or a new version of a thing) we don&rsquo;t control, and having <b>that</b> break the stable branches<br >
+<br >
+<br >
+<i><b>Example:03</b></i><br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2016-01-08-14.00.log.htm">Constrain Management</a><br >
+14:27:50 &lt;dhellmann&gt; #topic sorting out constraints issues for stable/liberty<br >
+14:28:00 &lt;dhellmann&gt; #link <a href="https://etherpad.openstack.org/p/stable-liberty-constraints-sanity">https://etherpad.openstack.org/p/stable-liberty-constraints-sanity</a><br >
+14:28:34 &lt;dhellmann&gt; mriedeman, dansmith, sdague, dims, lifeless, and I talked about the stable library spec this week<br >
+14:29:02 &lt;dhellmann&gt; as a consequence, mriedeman, dansmith, and I spent some time yesterday trying to figure out how to roll back the upper-constraints settings for stable/liberty<br >
+14:29:08 &lt;ttx&gt; the backward compat one, right ?<br >
+14:29:15 &lt;dhellmann&gt; we&rsquo;ve turned off the bot that was proposing changes<br >
+14:29:17 &lt;dhellmann&gt; ttx: yes<br >
+14:29:30 &lt;dhellmann&gt; we&rsquo;re keeping notes in the etherpad ^^ as we experiment<br >
+14:30:00 &lt;dhellmann&gt; at this point, we&rsquo;re still seeing if we can tell which versions of things work reliably so we can prepare a proposal for the rollback<br >
+14:30:34 &lt;dims&gt; dhellmann : right. i checked with dansmith that o.vo that&rsquo;s in stable/liberty branch works ok now<br >
+14:31:15 &lt;dhellmann&gt; dims : yes, I think that&rsquo;s what I remember from yesterday. He did have some concern that we didn&rsquo;t have sufficient test coverage to make him comfortable with rolling all the way back, though, so there&rsquo;s a list of test jobs to add in that etherpad, too<br >
+14:31:43 &lt;dims&gt; dhellmann : y, i added a grenade job for o.vo (multi-node)<br >
+14:31:53 &lt;dhellmann&gt; mriedeman is driving the work, as part of the stable team, but I thought I&rsquo;d mention it all here for cross-communication<br >
+14:32:00 &lt;dhellmann&gt; dims : excellent, thanks<br >
+14:32:04 &lt;dims&gt; good call dhellmann<br >
+14:32:41 &lt;dhellmann&gt; ok, that looks like everything from the formal agenda<br >
+14:32:41 &lt;dims&gt; i hope we can come up with a release-constraints.txt for stable/liberty and unblock the bot soon<br >
+14:32:44 &lt;dhellmann&gt; #topic open discussion<br >
+14:33:17 &lt;dhellmann&gt; dims : yes, we&rsquo;ll need both sets of test jobs first, but I agree<br >
+14:34:36 &lt;dhellmann&gt; oh, one other topic that came up was the difficulty in reviewing new requirements because of the changes in the constraints file<br >
+14:34:39 &lt;dhellmann&gt; #link <a href="https://review.openstack.org/#/c/264907/">https://review.openstack.org/#/c/264907/</a><br >
+14:35:09 &lt;dhellmann&gt; I proposed some alternate instructions, but lifeless objected on the grounds that they result in incomplete constraints, which means we don&rsquo;t understand all of the things we&rsquo;re adding to our dependencies<br >
+14:35:26 &lt;dhellmann&gt; this came up in the context of the mimic requirement for ironic&rsquo;s functional tests<br >
+14:35:47 &lt;dims&gt; dhellmann : if we saw mimic review, we would not have noticed twisted dragged in<br >
+14:35:50 &lt;dims&gt; right<br >
+14:35:54 &lt;dhellmann&gt; there was an email thread<br >
+14:35:55 &lt;dhellmann&gt; #link <a href="http://lists.openstack.org/pipermail/openstack-dev/2016-January/083510.html">http://lists.openstack.org/pipermail/openstack-dev/2016-January/083510.html</a><br >
+14:36:30 &lt;dhellmann&gt; dims : right, and when I did look at the constraints file with a dozen changes or so, I had no idea whether they were all needed or if some were just updates generated by the script because there had been a new release<br >
+14:36:38 &lt;dims&gt; dhellmann : we could add a job that calculates the u-c changes so reviewers don&rsquo;t have to do it by hand?<br >
+14:36:59 &lt;dhellmann&gt; dims : yeah, that&rsquo;s what lifeless and I came up with, but we need someone to write that part of the validation job<br >
+14:37:08 &lt;dhellmann&gt; it could be part of an existing job, because we wouldn&rsquo;t want it to fail, just warn<br >
+14:37:43 &lt;dhellmann&gt; that way if a new release of some third-level dependency happens it doesn&rsquo;t invalidate the proposed constraints change<br >
+14:38:04 &lt;dhellmann&gt; and we&rsquo;ll still get that update when the bot runs the next time<br >
+14:38:54 &lt;dhellmann&gt; ok, I think that&rsquo;s everything for this week, then<br >
+14:39:06 &lt;dhellmann&gt; have a good weekend, everyone!<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-06-05-13.01.log.html">Code04::Development of trusted network/liaisons across ecosystem</a><br >
+<i><b>Example:01</b></i><br >
+13:43:07 &lt;dhellmann&gt; we&rsquo;ve said for other cross-project teams that the cp team can decide which projects to work on directly vs. which to work on with a liaison<br >
+13:43:16 &lt;ttx&gt; If a project doesn&rsquo;t want us to do its release management, we could consider it&rsquo;s in the &ldquo;independent&rdquo; bucket<br >
+13:43:42 &lt;ttx&gt; I think the moment they want a stable branch though&#x2026; they need us<br >
+13:43:59 &lt;dhellmann&gt; how independent? do we still include them in status.openstack.org/release?<br >
+13:44:01 &lt;ttx&gt; the question is also &ldquo;should we offer to manage any project&rdquo;<br >
+13:44:26 &lt;ttx&gt; currently we aren&rsquo;t including them on the status page<br >
+13:44:42 &lt;ttx&gt; see ? I&rsquo;m trying to define the territory here<br >
+13:44:53 &lt;ttx&gt; from emergent properties of the model<br >
+13:45:04 &lt;dhellmann&gt; I&rsquo;m a bit more comfortable letting milestone-release projects handle a lot more of the work themselves than I am for projects doing intermediate semver releases, because it&rsquo;s easy to get the semver wrong or release something at a bad time<br >
+13:45:44 &lt;dhellmann&gt; at least until we have more people with practice doing the intermediate releases<br >
+13:46:34 &lt;ttx&gt; should we just consider them case-by-case ?<br >
+13:46:38 &lt;dhellmann&gt; so are you proposing that projects that want stable branches and reporting should let us manage that? and does that mean us doing it, or us guiding their liaison?<br >
+13:47:00 &lt;ttx&gt; I&rsquo;m trying to determine where we stop<br >
+13:47:11 &lt;ttx&gt; and how to record that somewhere<br >
+13:47:46 &lt;dhellmann&gt; we could use a tag in the governance repo to record it<br >
+13:47:48 &lt;ttx&gt; Do we need to be involved if they do stable branches ?<br >
+13:47:58 &lt;dhellmann&gt; not necessarily<br >
+13:48:15 &lt;dhellmann&gt; really, the scheduling of the releases is the trigger for me<br >
+13:48:41 &lt;dhellmann&gt; if they&rsquo;re on a 6 month schedule, I think it&rsquo;s safe to guide the liaison via documentation and help on irc<br >
+<br >
+<br >
+<i><b>Example:02</b></i><br >
+14:26:33 &lt;ttx&gt; currently we use teh pre-release ACL to reduce approval to PTL+us<br >
+14:26:53 &lt;dhellmann&gt; trying to track all of the projects was a lot of effort, and I&rsquo;d like to distribute that more<br >
+14:26:55 &lt;ttx&gt; I ended up reviewing most of the changes to check that the change was in master<br >
+14:27:15 &lt;ttx&gt; some PTLs also just waited for our approval and pinged us<br >
+14:27:42 &lt;ttx&gt; we couls remove ourselves from the preocess, give the pre-release acl top the release liaison and giev them the guidance<br >
+14:27:54 * ttx topes<br >
+14:27:57 &lt;ttx&gt; typos<br >
+14:28:06 &lt;dhellmann&gt; pushing that review work back on the PTL/core team would also solve the issue we identified with infra of not wanting to have to make acl changes as part of the release process<br >
+14:28:26 &lt;ttx&gt; well, you would still have an ACL issue<br >
+14:28:38 &lt;ttx&gt; PTL/core is different from stable<br >
+14:28:47 &lt;dhellmann&gt; ah, true<br >
+14:29:06 &lt;ttx&gt; and I kinda like to put the release liaison on the critical path<br >
+14:29:07 &lt;dhellmann&gt; clarkb suggested creating a new group and changing its membership. I sort of like that, if we can automate the setup.<br >
+14:29:16 &lt;ttx&gt; because they check FFEs and all<br >
+14:29:38 &lt;dhellmann&gt; if we have foo-newton groups for all projects, we can start them out with us, PTL, liaisons and then eventually add the foo-stable group<br >
+14:29:45 &lt;ttx&gt; so&#x2026;<br >
+14:29:51 &lt;dhellmann&gt; that&rsquo;s a lot more gerrit groups, though, so I don&rsquo;t know if we want to do that<br >
+14:29:56 &lt;ttx&gt; wouldn&rsquo;t be an issue if we had kept proposed/*<br >
+14:30:01 &lt;ttx&gt; but we didn&rsquo;t<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-11-27-14.04.log.htlm">Code05::Ongoing communication with projects</a><br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2017-09-01-15.01.log.html"><i><b>Example:01</b></i></a><br >
+15:45:20 &lt;ttx&gt; So that was my last countdown email and meeting leading<br >
+15:45:36 &lt;dhellmann&gt; thanks for a smooth cycle, ttx<br >
+15:45:52 &lt;ttx&gt; I&rsquo;m traveling next Friday, so will miss 1st meeting then<br >
+15:45:59 &lt;dhellmann&gt; and big thanks for stepping up, smcginnis<br >
+15:46:04 &lt;smcginnis&gt; ttx: IIRC, you suggest a one time direct email to all PTLs just stating how the release communication will go, then just the weekly ML posts?<br >
+15:46:08 &lt;dhellmann&gt; do we need to meet next week?<br >
+15:46:16 &lt;smcginnis&gt; dhellmann: Glad to.<br >
+15:46:29 &lt;ttx&gt; No need for a countdown email next week, I posted for R+1 and R+2<br >
+15:46:37 &lt;smcginnis&gt; I would guess there will be a lot of folks travelling. We could probably skip since we will have all the face to face time.<br >
+15:46:43 &lt;smcginnis&gt; meeting, I mean<br >
+15:47:05 &lt;dhellmann&gt; that&rsquo;s what I was thinking, smcginnis<br >
+15:47:14 &lt;ttx&gt; smcginnis: that&rsquo;s how we did it past cycles. First an email explaining how things will be done (you have received the Pike one as PTL), then ask PTLs to formally ack it, then use ML<br >
+15:47:39 &lt;smcginnis&gt; ttx: I was checking if I still had the pike one but apparently don&rsquo;t.<br >
+15:48:02 &lt;smcginnis&gt; ttx: I remember it was informative. If you still have a copy, I&rsquo;d love to take a look again and follow suite.<br >
+15:48:09 &lt;ttx&gt; that was openstack-dev + cc all PTLs apparently, let me find it<br >
+15:48:27 &lt;smcginnis&gt; Yeah, couldn&rsquo;t find it on the archives, but I can look some more.<br >
+15:48:31 &lt;ttx&gt; <a href="http://lists.openstack.org/pipermail/openstack-dev/2017-March/113303.html">http://lists.openstack.org/pipermail/openstack-dev/2017-March/113303.html</a><br >
+15:48:40 &lt;smcginnis&gt; Dang you&rsquo;re quick.<br >
+15:48:49 &lt;smcginnis&gt; Thanks!<br >
+15:48:58 &lt;ttx&gt; Nobody can beat my crazy firefox shortcuts<br >
+15:49:18 &lt;smcginnis&gt; re: meeting, I will send out an email stating no meeting next week if there are no objections.<br >
+15:49:24 &lt;dhellmann&gt; ++<br >
+<br >
+<br >
+<i><b>Example:02</b></i><br >
+14:07:00 &lt;ttx&gt; I&rsquo;m still a bit unclear on how we should proceed, past the release.sh<br >
+14:07:15 &lt;ttx&gt; especially around announcement<br >
+14:07:20 &lt;dhellmann&gt; do you mean with the announcements?<br >
+14:07:22 &lt;dhellmann&gt; ah, yeah<br >
+14:07:32 &lt;dhellmann&gt; so let&rsquo;s talk about that in a sec?<br >
+14:07:52 &lt;dhellmann&gt; * mordred to propose specific EOL dates for kilo and liberty<br >
+14:07:56 &lt;dhellmann&gt; that&rsquo;s done and merged<br >
+14:08:01 &lt;ttx&gt; sure<br >
+14:08:02 &lt;dhellmann&gt; * ttx to summarize discussion of release models for projects that don&rsquo;t complete their work by the end of the cycle<br >
+14:08:10 &lt;ttx&gt; done<br >
+14:08:14 &lt;dhellmann&gt; you sent that email<br >
+14:08:15 &lt;dhellmann&gt; k<br >
+14:08:19 &lt;ttx&gt; still need to sweep through them<br >
+14:08:35 &lt;dhellmann&gt; the open tag requests?<br >
+14:08:43 &lt;ttx&gt; but would like to complete the stable-maint swap first<br >
+14:08:56 &lt;dhellmann&gt; agreed<br >
+14:08:57 &lt;ttx&gt; no, checking that all projects are using the right tags<br >
+14:09:06 &lt;dhellmann&gt; ah<br >
+14:09:21 &lt;dhellmann&gt; yes, maybe after the milestone<br >
+14:09:48 &lt;mordred&gt; \o/<br >
+14:09:58 &lt;dhellmann&gt; I&rsquo;ve updated the instructions email draft based on your feedback, <a href="https://etherpad.openstack.org/p/wUAtzSETGa">https://etherpad.openstack.org/p/wUAtzSETGa</a><br >
+14:10:04 * mordred accomplishes things in release team<br >
+14:10:13 * dhellmann hands mordred a gold star<br >
+14:10:46 &lt;dhellmann&gt; I tried to include some details about why the order is important, to avoid having people think &ldquo;I can simplify this&rdquo; and doing stuff in the wrong order and breaking CD<br >
+14:12:03 &lt;dhellmann&gt; we still have several projects that haven&rsquo;t integrated reno: barbican, heat, manila, swift<br >
+14:12:23 &lt;dhellmann&gt; I think I just saw new patches for manila this morning; I haven&rsquo;t looked for patches in those other projects, yet<br >
+14:12:50 &lt;dhellmann&gt; I&rsquo;m intending to hold the M1 tags until reno is at least added to the project repository and the project-config changes are submitted. Does that seem fair?<br >
+14:13:13 &lt;ttx&gt; but would like things to stop moving first :)<br >
+14:13:14 &lt;ttx&gt; dhellmann: you still around,<br >
+<br >
+<br >
+<i><b>Example:03</b></i><br >
+14:35:09 &lt;ttx&gt; I think we could try what better communication of deadlines leads us to<br >
+14:35:36 &lt;dhellmann&gt; so only block releases for managed projects, and communicate more strongly that other projects are expected to not do releases?<br >
+14:35:45 &lt;ttx&gt; arguably the liberty situation was partly due to miscommunication of deadlines<br >
+14:36:11 &lt;ttx&gt; if <i>that</i> fails we should ACL<br >
+14:36:22 &lt;ttx&gt; but by then I expect we&rsquo;ll have all autmated<br >
+14:36:39 &lt;dhellmann&gt; next cycle? I hope so.<br >
+14:36:59 &lt;dhellmann&gt; ok, I&rsquo;ll write up an email about the release freeze period<br >
+14:37:02 &lt;ttx&gt; My point is.. last time it was partly our fault for not being clear enough.<br >
+14:37:15 &lt;dhellmann&gt; I know the start date, do we have an end date?<br >
+14:37:36 &lt;dhellmann&gt; sure, I think we need to be more clear and explicit this time<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2017-09-01-15.01.log.html"><i><b>Example:03-b</b></i></a><br >
+15:25:09 * smcginnis reads latest notes in etherpad<br >
+15:25:50 &lt;dhellmann&gt; I wonder if patrole should really be cycle-based<br >
+15:26:31 &lt;dhellmann&gt; we should probably send out a warning email about all of the projects (missing and old) today or monday<br >
+15:26:37 &lt;smcginnis&gt; That&rsquo;s a tempest plugin, so I would think independent should be OK there.<br >
+15:26:51 &lt;smcginnis&gt; I can do that.<br >
+15:27:18 &lt;smcginnis&gt; #action smcginnis to send out email alerting to projects with old or missing intermediary releases<br >
+15:27:18 &lt;dhellmann&gt; and rather than working through all of the logic again, I think we should just say we&rsquo;re going to tag HEAD if we don&rsquo;t get a release by RC1<br >
+15:27:32 &lt;smcginnis&gt; That makes sense to me.<br >
+15:27:33 &lt;dhellmann&gt; I think the same reasoning applies as for libraries<br >
+15:27:41 &lt;smcginnis&gt; And is kind of our only good option in most cases it seems.<br >
+15:27:45 &lt;dhellmann&gt; right<br >
+15:27:57 * ttx catches up after eterpad formatting fun<br >
+15:28:05 &lt;dhellmann&gt; if they don&rsquo;t want us to do that, they should let us know what their plan is<br >
+15:28:42 &lt;ttx&gt; so&#x2026; historically we have been rather flexible for WHEN rc1 hits<br >
+15:28:54 &lt;dhellmann&gt; ttx: we paste that content into the etherpad every cycle. maybe we should reformat the readme.<br >
+15:28:54 &lt;smcginnis&gt; The one thing with all of this - I wonder if we should log this somewhere to make sure it&rsquo;s easy to go back and see what was release tema initiated and what was not.<br >
+15:28:55 &lt;ttx&gt; it&rsquo;s been &ldquo;when ready&rdquo; with a ideal target week<br >
+15:29:08 &lt;smcginnis&gt; As far as determining what projects need to be removed.<br >
+15:29:36 &lt;dhellmann&gt; ttx: that&rsquo;s true. I guess if we wait to branch something the only thing that&rsquo;s going to break is that project, right?<br >
+15:30:09 &lt;smcginnis&gt; We would still force a release and branch, but wait until just before final release?<br >
+15:30:20 &lt;dhellmann&gt; hmm, yeah<br >
+15:30:29 &lt;ttx&gt; Well, we need a RC1 for the same reason we need an intermediary release: faility to fall back on a recent tag<br >
+15:30:34 &lt;ttx&gt; ability<br >
+15:31:30 &lt;ttx&gt; so on one side we really want an rc1. On the other we don&rsquo;t want half-baked RC1s<br >
+15:31:43 &lt;ttx&gt; since those are in theory releasable<br >
+15:32:01 &lt;ttx&gt; this is why we have that half/half policy<br >
+15:32:27 &lt;ttx&gt; tag RC1 when ready BUT ideally on that week<br >
+15:32:57 &lt;smcginnis&gt; Maybe if nothing by Friday morning, we force it?<br >
+15:32:58 &lt;dhellmann&gt; I think that&rsquo;s been fine for the projects that do it. We were concerned with the projects that don&rsquo;t propose one at all.<br >
+15:33:10 &lt;ttx&gt; I&rsquo;m not that concerned with RC1s&#x2026; milestone projects just did a q3 and are aware<br >
+15:33:29 &lt;ttx&gt; I&rsquo;m more concerned with missing intermediaries, which is why I listed them<br >
+15:33:44 &lt;dhellmann&gt; what about the intermediary projects? I&rsquo;m calling those &ldquo;release candidates&rdquo; too, I guess, which is confusing.<br >
+15:34:29 &lt;ttx&gt; yes<br >
+15:34:31 &lt;dhellmann&gt; <a href="https://releases.openstack.org/reference/release_models.html#cycle-with-intermediary">https://releases.openstack.org/reference/release_models.html#cycle-with-intermediary</a> talks about preparing a release &ldquo;near the end&rdquo; of the cycle<br >
+15:34:58 &lt;ttx&gt; historically we&rsquo;ve had intermediaries being refreshed up to R-1<br >
+15:35:13 &lt;ttx&gt; which is OK IF you have a fallback<br >
+15:35:15 &lt;armstrong&gt; smcginnis: Maybe if nothing by Friday morning, we force it? How?<br >
+15:35:21 &lt;dhellmann&gt; <a href="https://releases.openstack.org/queens/schedule.html#q-finalrc">https://releases.openstack.org/queens/schedule.html#q-finalrc</a> has the dates for final intermediary releases as the week of 19 Feb<br >
+15:35:27 &lt;ttx&gt; right<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2016-04-15-14.00.log.html"><i><b>Example:04</b></i></a><br >
+14:34:13 &lt;dhellmann&gt; &ldquo;Communication with PTLs and Liaisons was spotty for the entire cycle.&rdquo;<br >
+14:34:34 &lt;dhellmann&gt; I have no good ideas here, aside from stressing that everyone needs to actually figure out how to read a lot of email.<br >
+14:34:50 &lt;dhellmann&gt; this will be a topic of discussion for the fishbowl session, for sure<br >
+14:35:05 &lt;ttx&gt; frankly&#x2026; given the number of PTLs who didn&rsquo;t read my design summit scheduling emails&#x2026; I don&rsquo;t know what to do<br >
+14:35:41 &lt;dhellmann&gt; the other thing I&rsquo;m going to do is discourage you from chasing folks down<br >
+14:35:45 &lt;ttx&gt; Over the last days I had about 6 of them asking me how they can edit the titles on their sessions<br >
+14:35:47 &lt;EmilienM&gt; ttx: that is something that could be addressed during a TC meeting<br >
+14:36:11 &lt;ttx&gt; EmilienM: how ? By throwing out of the tent projects that have PTLs that won&rsquo;t read their emails ?<br >
+14:36:13 &lt;EmilienM&gt; it&rsquo;s part of PTL&rsquo;s duty to take care of scheduling sessions<br >
+14:36:19 &lt;EmilienM&gt; I don&rsquo;t know :(<br >
+14:37:14 &lt;ttx&gt; The problem is that email is stateless notification. You don&rsquo;t have a list of standing items to process and check them one by one<br >
+14:37:16 &lt;dhellmann&gt; I want folks to come to rely on the weekly countdown emails for reminders and notices, so we can avoid doing lots of 1:1 discussions. We need to figure out how to train people to read those. :-/<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2017-12-01-15.00.log.html">Code06::Release Model/Governance Management</a><br >
+<i><b>Example:01</b></i><br >
+15:19:52 &lt;smcginnis&gt; #action ttx to propose some changes formalizing release models in relation to buckets<br >
+15:20:03 &lt;dhellmann&gt; smcginnis : thanks, I&rsquo;m caught up<br >
+15:20:04 &lt;ttx&gt; yes, it was just informal, the map gives us a framework for it<br >
+15:20:32 &lt;smcginnis&gt; It does help having that map to make it more clear/obvious what is being referred to.<br >
+15:20:47 &lt;smcginnis&gt; OK, I&rsquo;ll combine the next to items as I think they&rsquo;re related.<br >
+15:20:50 &lt;smcginnis&gt; #topic Release activities while team is at Kubecon<br >
+15:21:15 &lt;smcginnis&gt; I think we can skip the meeting since the majority of us will be in Austin.<br >
+15:21:24 &lt;dhellmann&gt; we could meet in person :-)<br >
+15:21:28 &lt;ttx&gt; Does that not violate some insurance policy?<br >
+15:21:34 &lt;smcginnis&gt; dhellmann: I&rsquo;m hoping!<br >
+15:21:42 &lt;dhellmann&gt; ttx: that only applies if we&rsquo;re on the same flight, I think?<br >
+15:21:46 &lt;smcginnis&gt; ttx: Hah. Maybe we just can&rsquo;t all be on the same flight. :)<br >
+15:21:49 &lt;ttx&gt; Oh yes, that&rsquo;s that<br >
+15:21:51 &lt;smcginnis&gt; dhellmann: jinx<br >
+15:21:56 &lt;dhellmann&gt; :-P<br >
+15:22:08 &lt;ttx&gt; OK, so there is the release management discussion with K8s folks<br >
+15:22:13 &lt;smcginnis&gt; We&rsquo;ll have to take separate Uber&rsquo;s though.<br >
+15:22:18 &lt;ttx&gt; Thursday afternoon<br >
+15:22:29 &lt;smcginnis&gt; ttx: Oh? I wasn&rsquo;t aware of that. Do you have details?<br >
+15:22:41 &lt;ttx&gt; smcginnis: I do have details<br >
+15:23:11 * smcginnis signed up a while back thinking it would be a nice easy learning conference. Now schedule is full of obligations. :)<br >
+15:23:14 &lt;ttx&gt; your whole week schedule is about to change<br >
+15:23:29 &lt;ttx&gt; <a href="https://etherpad.openstack.org/p/k8s-openstack-community-story-trading">https://etherpad.openstack.org/p/k8s-openstack-community-story-trading</a><br >
+15:23:38 &lt;ttx&gt; I didn&rsquo;t know you were coming<br >
+15:24:02 &lt;ttx&gt; otherwise I would have put you in the loop earlier :)<br >
+15:24:07 &lt;smcginnis&gt; Oh, wow. Yeah, this is great.<br >
+15:24:25 * ttx has been a bit busy actually engaging with adjacent communities<br >
+<br >
+<br >
+4:02:45 &lt;ttx&gt; monasca is completely off<br >
+14:03:05 &lt;dhellmann&gt; sigh<br >
+14:03:05 &lt;ttx&gt; it has a large monasca deliverable in milestones mode<br >
+14:03:21 &lt;ttx&gt; but it releases piecemeal with different version numbers<br >
+14:03:40 &lt;ttx&gt; <b>and</b> of course doesn&rsquo;t sync openstack/releases<br >
+14:03:52 &lt;ttx&gt; looks like they need &ldquo;the talk&rdquo;<br >
+14:04:02 &lt;dhellmann&gt; shall we draw straws?<br >
+14:04:15 &lt;ttx&gt; I&rsquo;m away next week<br >
+14:04:22 &lt;dhellmann&gt; ok, I&rsquo;ll get in touch with rolland<br >
+14:04:38 &lt;dhellmann&gt; #action dhellmann talk to monasca team about releases<br >
+14:04:45 &lt;ttx&gt; next, we have a few neutron stadium projects<br >
+14:05:01 &lt;ttx&gt; which use the milestones model, except they missed m1 and m2<br >
+14:05:22 &lt;ttx&gt; networking-ovn, octavia, vmware-nsx<br >
+14:05:42 &lt;ttx&gt; those should probably just switch to intermediary<br >
+14:05:49 &lt;dhellmann&gt; yeah, I don&rsquo;t know if that makes them cycle-with-intermediary or just that they&rsquo;ve missed a deadline<br >
+14:05:59 &lt;ttx&gt; we should ping mestery and align<br >
+14:06:21 &lt;ttx&gt; A few things did mitaka-1 but missed mitaka-2<br >
+14:06:40 &lt;ttx&gt; That would be <b>astara</b> and murano-apps<br >
+14:06:50 &lt;ttx&gt; could be harmless<br >
+14:07:02 &lt;dhellmann&gt; #action dhellmann talk to mestery about networking-ovn, octavia, vmware-nsx<br >
+14:07:05 &lt;ttx&gt; is cycle-with-intermediary but did milestones: freezern searchlight and aodh<br >
+14:07:15 &lt;ttx&gt; fix for freezer is already in<br >
+14:07:30 &lt;dhellmann&gt; ok, I&rsquo;ll propose changing the tags for those others<br >
+14:07:40 &lt;ttx&gt; yeah, and get the ptl +2<br >
+14:07:44 &lt;dhellmann&gt; #action dhellmann change searchlight and aodh to cycle-with-intermediary<br >
+14:07:55 &lt;dhellmann&gt; maybe we should add some validation for tag type and release model<br >
+14:08:05 &lt;dhellmann&gt; I didn&rsquo;t want to do that, but I haven&rsquo;t been doing the manual checking either<br >
+14:08:37 &lt;ttx&gt; then there is a bunch of &ldquo;intermediary&rdquo; projects that haven&rsquo;t done a release yet. Probably nothing to worry about, but we should keep an eye on those<br >
+14:08:45 &lt;ttx&gt; we kinda want at least one<br >
+14:09:18 &lt;ttx&gt; if senlin just posted an m2, they got the wrong model, too<br >
+14:10:08 &lt;ttx&gt; we have three that are still marked independent but may want to be intermediary to be able to say &ldquo;mitaka&rdquo;: magnum, cue and rally<br >
+14:10:30 &lt;ttx&gt; I pinged Adrian yesterday and he said he would do it<br >
+14:10:35 &lt;ttx&gt; but still nothing<br >
+14:10:45 &lt;dhellmann&gt; I left a comment on the senlin release request<br >
+14:11:06 &lt;dhellmann&gt; ok, I think the magnum team has had enough opportunities<br >
+14:11:11 &lt;ttx&gt; finally, we have a few that follow cycle, did tags but did not have the corresponding releases change<br >
+14:11:44 &lt;dhellmann&gt; so they tagged, but didn&rsquo;t file an update in the releases repo?<br >
+14:11:57 &lt;ttx&gt; I think we&rsquo;ll have those as long as we don&rsquo;t reclaim tagging rights<br >
+14:12:04 &lt;ttx&gt; yeah<br >
+14:12:08 &lt;dhellmann&gt; yeah, I&rsquo;m not too worried about that<br >
+<br >
+<br >
+<br >
+<br >
+14:02:17 &lt;dhellmann&gt; I&rsquo;ve started copying some of the actionable items from the postmortem over to the newton planning document<br >
+14:02:22 &lt;dhellmann&gt; I&rsquo;ve annotated those where appropriate<br >
+14:02:49 &lt;dhellmann&gt; the merge-release-tags job failures are pretty straightforward, so I don&rsquo;t know that we need to discuss those<br >
+14:03:17 &lt;dhellmann&gt; we should try to think about ways to mitigate the fact that we only run the release process for most projects twice a month<br >
+14:03:35 &lt;dhellmann&gt; maybe now that we have the release-test repo we can do the test work the week before each milestone/deadline?<br >
+14:04:56 &lt;ttx&gt; hm<br >
+14:05:46 &lt;dhellmann&gt; we can take that as it comes, if we change fewer things maybe it won&rsquo;t be as necessary<br >
+14:05:53 &lt;dhellmann&gt; though I expect we&rsquo;ll want to test the final release process<br >
+14:05:54 &lt;ttx&gt; It&rsquo;s tricky. We should I think determine what code paths in the automation only run on release day<br >
+14:06:05 &lt;ttx&gt; and apply extra testing / care to that<br >
+14:06:27 &lt;ttx&gt; But as we are still changing things it&rsquo;s difficult to tell now<br >
+14:06:48 &lt;dhellmann&gt; right. I&rsquo;m not sure we actually have that many parts of the code that <b>only</b> run on the final release<br >
+14:07:15 &lt;dhellmann&gt; there&rsquo;s the announcement email thing, but if we&rsquo;re going to turn those off for milestone projects that will be a new change<br >
+14:07:27 &lt;ttx&gt; code paths is not the right term<br >
+14:07:27 &lt;dhellmann&gt; we&rsquo;ll want to test that when we make the change :-)<br >
+14:07:33 &lt;dhellmann&gt; process paths?<br >
+14:07:40 &lt;ttx&gt; It&rsquo;s just taht we want things to behave slightly differently on release day<br >
+14:07:47 &lt;ttx&gt; like announcements<br >
+14:08:04 &lt;dhellmann&gt; right<br >
+14:08:05 &lt;ttx&gt; or at least we need to think about it<br >
+14:08:19 &lt;ttx&gt; maybe it&rsquo;s ok to have separate emails announcing on release day<br >
+14:08:26 &lt;dhellmann&gt; I&rsquo;ve been making notes in <a href="https://etherpad.openstack.org/p/newton-relmgt-plan">https://etherpad.openstack.org/p/newton-relmgt-plan</a> for a while<br >
+14:08:30 &lt;ttx&gt; but I just didn&rsquo;t expect them so early<br >
+14:08:52 &lt;ttx&gt; Also difficultt o judge the result from a test repo<br >
+14:08:53 &lt;dhellmann&gt; yeah, it&rsquo;s tricky to coordinate the timing of those automatic emails with the press release<br >
+14:09:17 &lt;ttx&gt; FOr example we didn&rsquo;t spot the &ldquo;only rc1..release&rdquo; stuff<br >
+14:10:10 &lt;dhellmann&gt; yeah, that result makes sense but it&rsquo;s not what we want<br >
+14:11:18 &lt;ttx&gt; So short of running a dry-run with copies of repos and alternate email addresses for destination&#x2026;<br >
+14:11:30 &lt;ttx&gt; it&rsquo;s actually tricky to spot all the potential issues<br >
+14:11:36 &lt;dhellmann&gt; yeah<br >
+<br >
+<i><b>Example:02</b></i><br >
+14:17:07 &lt;dhellmann&gt; #topic Governance reviews<br >
+14:17:13 &lt;dhellmann&gt; #link <a href="https://review.openstack.org/#/c/364307/">https://review.openstack.org/#/c/364307/</a><br >
+14:17:41 &lt;ttx&gt; I singled two<br >
+14:17:46 &lt;dhellmann&gt; that one looks like it&rsquo;s an empty puppet repo<br >
+14:17:59 &lt;dhellmann&gt; I assumed they were adding more stuff to their current release<br >
+14:18:15 &lt;dims&gt; y, don&rsquo;t understand the rush<br >
+14:18:20 &lt;dhellmann&gt; I guess we&rsquo;ve done that for other deployment projects, since they&rsquo;re so decomposed already. I don&rsquo;t know why I voted -1 here<br >
+14:18:35 &lt;dhellmann&gt; although the governance patch shouldn&rsquo;t block creating the repository<br >
+14:18:36 &lt;ttx&gt; For that one I&rsquo;m &ldquo;whatever, dude&rdquo;<br >
+14:19:05 &lt;ttx&gt; if EmilienM wants it, he shall have it<br >
+14:19:17 * EmilienM reads<br >
+14:19:48 &lt;dhellmann&gt; maybe I thought it would interfere with the validation for the final newton deliverable?<br >
+14:19:54 &lt;dims&gt; EmilienM : you can do anything you want with that repo right now, so what&rsquo;s stopping its use?<br >
+14:19:58 &lt;dhellmann&gt; I don&rsquo;t remember now if we kept the check to ensure that all repos were being tagged<br >
+14:20:07 &lt;ttx&gt; dhellmann: that part will likely skip Newton anyway<br >
+14:20:15 &lt;dhellmann&gt; meh,  it&rsquo;s a separate deliverable so that wouldn&rsquo;t matter<br >
+14:20:24 &lt;EmilienM&gt; dims: nothing, they can start working on it<br >
+14:20:24 &lt;dhellmann&gt; ttx: right, but all of the scripts don&rsquo;t know that<br >
+14:20:36 &lt;EmilienM&gt; dims: someone from Mirantis afik wanted to start coding on it<br >
+14:20:42 &lt;ttx&gt; dhellmann: there are other bits that won&rsquo;t get released in Newton<br >
+14:20:47 &lt;dhellmann&gt; yeah<br >
+14:20:56 &lt;dims&gt; Lol, will ping them internally as well<br >
+14:21:06 &lt;dhellmann&gt; I can&rsquo;t remember why I said -1 on this one. Maybe I needed more caffeine.<br >
+14:21:08 &lt;ttx&gt; we almost need branches on the yaml file<br >
+14:21:11 &lt;dhellmann&gt; dims, I&rsquo;m going to go ahead and +1 this<br >
+14:21:12 &lt;EmilienM&gt; dhellmann: no worries :D<br >
+14:21:31 &lt;dhellmann&gt; ttx: yes, or to move some of the information into the releases repo instead of the governance repo<br >
+14:21:32 &lt;ttx&gt; starting to wonder if we should not maintain the repo/mapping/releasemodel ina separate file in releases<br >
+14:21:45 &lt;dhellmann&gt; ttx: exactly<br >
+14:21:54 &lt;dims&gt; dhellmann : ok<br >
+14:21:56 &lt;dhellmann&gt; we can talk about that at the summit<br >
+14:22:00 &lt;ttx&gt; the only part that touches governance there is the election roll<br >
+14:22:15 &lt;ttx&gt; but they could ask us for that data<br >
+14:22:44 &lt;dhellmann&gt; ttx: I would be ok with tags and repos being defined in governance, and deliverables being defined in releases<br >
+14:22:51 &lt;ttx&gt; although the release:none stuff would not make a lot of sense there meh<br >
+14:22:58 &lt;anteaya&gt; anyone can create an electoral roll now<br >
+14:22:58 &lt;dhellmann&gt; although even some of the tags might be easier to manage in releases<br >
+14:23:04 &lt;ttx&gt; ah, yes, that&rsquo;s an option<br >
+14:23:18 &lt;dhellmann&gt; types and models<br >
+14:23:18 &lt;anteaya&gt; fungi: has a script and gerrit permissions now allow anyone to run it<br >
+14:23:33 &lt;ttx&gt; anteaya: but they use the team/repo mapping that is in projects.yaml<br >
+14:23:39 &lt;anteaya&gt; yes<br >
+14:23:51 &lt;ttx&gt; if we move that away in the releases repo, that means election rolls are controlled by release team<br >
+14:23:57 &lt;fungi&gt; oh, right, i missed it&rsquo;s meeting time<br >
+14:24:00 &lt;ttx&gt; I kind of like that, but I suspect others might object<br >
+14:24:17 &lt;dhellmann&gt; fungi : sorry, I was rude and left you out of the courtesy ping<br >
+14:24:21 &lt;ttx&gt; so we probably need to keep the project/repo map in governance<br >
+14:24:37 &lt;fungi&gt; dhellmann: no worries. i caught up on other things!<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-10-12-13.02.log.html">Code07::Release planning/tracking</a><br >
+<i><b>Example:01</b></i><br >
+13:02:48 &lt;ttx&gt; #startmeeting releaseteam<br >
+13:02:49 &lt;openstack&gt; Meeting started Mon Oct 12 13:02:48 2015 UTC and is due to finish in 60 minutes.  The chair is ttx. Information about MeetBot at <a href="http://wiki.debian.org/MeetBot">http://wiki.debian.org/MeetBot</a>.<br >
+13:02:50 &lt;openstack&gt; Useful Commands: #action #agreed #help #info #idea #link #topic #startvote.<br >
+13:02:53 &lt;openstack&gt; The meeting name has been set to &rsquo;releaseteam&rsquo;<br >
+13:03:05 &lt;ttx&gt; Last of our Liberty meetings, i&rsquo;ll give you the chair baton for the next ones<br >
+13:03:18 &lt;dhellmann&gt; sounds good<br >
+13:03:18 &lt;ttx&gt; (probably when back from Tokyo)<br >
+13:03:27 &lt;ttx&gt; I don&rsquo;t have much<br >
+13:03:34 &lt;ttx&gt; <a href="https://wiki.openstack.org/wiki/Release_Cycle_Management#Meeting">https://wiki.openstack.org/wiki/Release_Cycle_Management#Meeting</a><br >
+13:03:51 &lt;ttx&gt; #topic Liberty release coordination<br >
+13:03:59 &lt;ttx&gt; <a href="https://etherpad.openstack.org/p/liberty-final-release">https://etherpad.openstack.org/p/liberty-final-release</a><br >
+13:04:04 &lt;ttx&gt; We are on the last line<br >
+13:04:07 &lt;ttx&gt; 3 things<br >
+13:04:24 &lt;ttx&gt; 1/ Keep on track of things that may trigger a late respin<br >
+13:04:45 &lt;ttx&gt; I&rsquo;ll be in touch today with PTLs that have stable/liberty changes up, just in case<br >
+13:05:05 &lt;ttx&gt; but nothing has been mentioned yet<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2018-02-23-15.00.log.html ">*Example:02*/</a><br >
+<br >
+15:01:05 &lt;lbragstad&gt; o/<br >
+15:01:20 &lt;smcginnis&gt; #link <a href="https://etherpad.openstack.org/p/queens-relmgt-tracking">https://etherpad.openstack.org/p/queens-relmgt-tracking</a> Agenda<br >
+15:01:40 &lt;smcginnis&gt; Looks like we are way way down on line 518<br >
+15:02:07 &lt;smcginnis&gt; #topic Release Status<br >
+15:02:34 &lt;smcginnis&gt; There were a few stagglers this morning, but I processed the remaining RC patches.<br >
+15:02:43 &lt;lbragstad&gt; \o/<br >
+15:02:48 &lt;smcginnis&gt; The dashboard looks pretty good right now.<br >
+15:03:01 &lt;dhellmann&gt; nice!<br >
+15:03:15 &lt;smcginnis&gt; And this was (knock on wood) a pretty smooth deadline overall I think.<br >
+15:03:15 &lt;dhellmann&gt; so we could put together the final release patch after the meeting and start piling up PTL and liaison +1 votes<br >
+15:03:39 &lt;smcginnis&gt; My plan was to do that and also include the release note links.<br >
+15:03:45 &lt;dhellmann&gt; ++<br >
+15:04:00 &lt;dhellmann&gt; we could go ahead and do the release notes links as a separate patch and approve that one today<br >
+15:04:05 &lt;smcginnis&gt; I ran it earlier and there were several that have the page but do not have it included in the deliverable file.<br >
+15:04:21 &lt;smcginnis&gt; OK, that&rsquo;s a good idea.<br >
+15:04:37 &lt;smcginnis&gt; Especially as more people start seeking out those release notes.<br >
+15:05:01 &lt;dhellmann&gt; right<br >
+15:05:15 &lt;smcginnis&gt; So looking at the task list on line 514 copied from the PROCESS doc.<br >
+15:05:29 &lt;dhellmann&gt; at this point all of the projects should have notes of some sort, but we can update others later if any don&rsquo;t<br >
+15:05:31 &lt;smcginnis&gt; First one I will do right after the meeting to get the release notes out.<br >
+15:05:36 &lt;smcginnis&gt; ++<br >
+<br >
+<br >
+15:10:49 &lt;smcginnis&gt; #topic PTG plan<br >
+15:11:07 &lt;smcginnis&gt; Monday and Tuesday we have the help room.<br >
+15:11:33 &lt;smcginnis&gt; There are a few other things I need to attend to, so I was thinking I would just send out a notice that if anyone needed release team time during those days to just let us know.<br >
+15:11:43 &lt;dhellmann&gt; good idea<br >
+15:11:48 &lt;smcginnis&gt; I sat in the room for a while last time and just got one question.<br >
+15:12:00 &lt;smcginnis&gt; And that would have been easy enough to answer over IRC.<br >
+15:12:12 &lt;smcginnis&gt; But I definitely want to be available if anyone needs anything.<br >
+15:12:35 &lt;dhellmann&gt; one team, maybe docs?, suggested that folks schedule time<br >
+15:12:41 &lt;dhellmann&gt; maybe we can do something similar<br >
+15:12:53 &lt;smcginnis&gt; IIRC, they had an ethercalc.<br >
+15:13:02 &lt;smcginnis&gt; We could probably do that too.<br >
+15:13:11 &lt;fungi&gt; yep, the infra and qa teams are doing something similar<br >
+15:13:24 &lt;dhellmann&gt; a pattern we can copy!<br >
+15:13:25 &lt;dhellmann&gt; :-)<br >
+15:13:32 &lt;fungi&gt; <a href="https://ethercalc.openstack.org/cvro305izog2">https://ethercalc.openstack.org/cvro305izog2</a><br >
+15:13:33 &lt;smcginnis&gt; Or I was thinking keeping it easy and just use the ptgbot and the ptg channel to let folks know to just ping us.<br >
+15:13:44 &lt;smcginnis&gt; Any thoughts one way or the other?<br >
+15:13:45 &lt;dhellmann&gt; that works, too<br >
+<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2018-03-09-15.02.log.html"><i><b>Example:03</b></i></a><br >
+15:02:24 &lt;ttx&gt; Ping list: dhellmann, dims, fungi, tonyb, lbragstad, smcginnis, armstrong<br >
+15:02:47 &lt;ttx&gt; Agenda <a href="https://etherpad.openstack.org/p/rocky-relmgt-tracking">https://etherpad.openstack.org/p/rocky-relmgt-tracking</a> R-25<br >
+15:03:03 &lt;ttx&gt; A few topics I added<br >
+15:03:31 &lt;dhellmann&gt; I can&rsquo;t remember if we&rsquo;re ready to take the default series patch now or if that should wait for the finals for the trailing projects<br >
+15:03:34 &lt;ttx&gt; There is a default series patch <a href="https://review.openstack.org/#/c/548564/">https://review.openstack.org/#/c/548564/</a><br >
+15:03:43 &lt;ttx&gt; right that was my question<br >
+15:04:02 &lt;ttx&gt; At this point I&rsquo;d just wait until next week and approve it once we are past cycle-trailing deadline<br >
+15:04:15 &lt;dhellmann&gt; yeah, that seems safest<br >
+15:04:16 &lt;ttx&gt; but there might be good reasons not to<br >
+15:04:40 &lt;dhellmann&gt; let me look at where that value is used again&#x2026;<br >
+15:05:20 &lt;dhellmann&gt; there are some validation rules that only apply to the &ldquo;current&rdquo; release<br >
+15:05:46 &lt;dhellmann&gt; so it&rsquo;s probably best to wait to approve it<br >
+15:05:51 &lt;dhellmann&gt; we should probably change that set of rules to be a bit more flexible<br >
+15:06:04 &lt;dhellmann&gt; and say they don&rsquo;t apply to &ldquo;old&rdquo; releases instead of that they only apply to the &ldquo;current&rdquo; release<br >
+15:06:32 &lt;ttx&gt; ack<br >
+15:06:39 &lt;dhellmann&gt; so after we approve <a href="https://review.openstack.org/550678">https://review.openstack.org/550678</a> we can update the default safely<br >
+15:06:55 &lt;ttx&gt; #agreed let&rsquo;s wait until past cycle-trailing deadline to approve <a href="https://review.openstack.org/#/c/548564/">https://review.openstack.org/#/c/548564/</a><br >
+15:06:59 &lt;ttx&gt; #topic Packaging as part of &ldquo;the release&rdquo; / cycle-trailing<br >
+15:07:30 &lt;dhellmann&gt; I&rsquo;m not sure what this topic is about<br >
+15:07:30 &lt;ttx&gt; So there was a bit of a mismatch with release comms around new projects<br >
+15:07:50 &lt;ttx&gt; They were assumed as part of the release but were not<br >
+15:07:59 &lt;ttx&gt; For some it&rsquo;s pretty clear cut<br >
+15:08:32 &lt;ttx&gt; For others it&rsquo;s a bit more confusing<br >
+15:08:43 &lt;ttx&gt; They all failed the milestone-2 inclusion deadline<br >
+15:09:01 &lt;dhellmann&gt; ah, yes, we talked about documenting the policy for that more clearly<br >
+15:09:13 &lt;ttx&gt; But that made me wonder&#x2026;<br >
+15:09:27 &lt;ttx&gt; Like for LOCI or openstack-helm, they will do a queens release<br >
+15:09:47 &lt;ttx&gt; since that is downstream, that will happen cycle-trailing, probably later than the deadline<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-10-12-13.02.log.html ">Code08::Release stabilization</a><br >
+<br >
+<i><b><a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-06-05-13.01.log.html">Example:01</a></b></i><br >
+13:17:39 &lt;dhellmann&gt; yes, I think we should start using the new versioning immediately<br >
+13:17:45 &lt;dhellmann&gt; with the next tag, that is<br >
+13:18:02 &lt;ttx&gt; so that means pushing 12.0.0 (or whatever) in all setup.cfg that have 2015.2<br >
+13:18:10 &lt;ttx&gt; for some definition of &rsquo;all&rsquo;<br >
+13:18:16 &lt;ttx&gt; (to be discussed below)<br >
+13:18:39 &lt;ttx&gt; I guess we still have time before l1 to do that<br >
+13:18:54 &lt;ttx&gt; but that means closig the discussion on the initial number to pick soon enough<br >
+13:19:08 &lt;dhellmann&gt; for semver, using pre-releases might be more complex than just building versions based on what&rsquo;s in git<br >
+13:19:32 &lt;dhellmann&gt; so at the milestone we could remove the version and then tag 12.0.0b1 or whatever and go with tags after that<br >
+13:20:39 &lt;ttx&gt; right. Basically we would only use preversion for stuff that follows the time-based milestone model<br >
+13:20:51 &lt;ttx&gt; for intermediary releases we would use post version<br >
+13:21:10 &lt;ttx&gt; fwiw that&rsquo;s how it&rsquo;s done currently for swift (intermediary, post)<br >
+13:21:28 &lt;dhellmann&gt; well, the time-based releases are still going to be using semver, right? we&rsquo;re just tagging releases less often for them?<br >
+13:22:07 &lt;ttx&gt; yes. preversion doesn&rsquo;t mean semver-incompatible<br >
+13:22:22 &lt;ttx&gt; it&rsquo;s just a way to support intermediary tags that are not &ldquo;releases&rdquo;<br >
+13:22:35 &lt;ttx&gt; so that we can tag milestones and RCs<br >
+13:22:50 &lt;ttx&gt; Alternative is to stop tagging  milestones and RCs<br >
+13:23:14 &lt;ttx&gt; but I like that those exercise the release machinery in advance of final release<br >
+13:23:27 &lt;ttx&gt; and also lets us publish RC tarballs for testing<br >
+13:23:46 &lt;ttx&gt; for something released every 6 months I think that still has value<br >
+13:24:30 &lt;dhellmann&gt; ok, I&rsquo;m not sure I see all of that, but I don&rsquo;t want to bog us down in the meeting<br >
+13:24:30 &lt;ttx&gt; dhellmann: anything else on that topic ?<br >
+13:25:26 &lt;ttx&gt; dhellmann: I think we just need to agree that the goal for things still using the time based milestone development cycle, is to tag them X.Y.0b1 at liberty-1<br >
+13:25:41 &lt;ttx&gt; we can evolve our long-term thinking<br >
+13:25:49 &lt;dhellmann&gt; ok, that much I do agree with :-)<br >
+<br >
+<br >
+13:45:04 &lt;dhellmann&gt; I&rsquo;m a bit more comfortable letting milestone-release projects handle a lot more of the work themselves than I am for projects doing intermediate semver releases, because it&rsquo;s easy to get the semver wrong or release something at a bad time<br >
+13:45:44 &lt;dhellmann&gt; at least until we have more people with practice doing the intermediate releases<br >
+13:46:34 &lt;ttx&gt; should we just consider them case-by-case ?<br >
+13:46:38 &lt;dhellmann&gt; so are you proposing that projects that want stable branches and reporting should let us manage that? and does that mean us doing it, or us guiding their liaison?<br >
+13:47:00 &lt;ttx&gt; I&rsquo;m trying to determine where we stop<br >
+13:47:11 &lt;ttx&gt; and how to record that somewhere<br >
+13:47:46 &lt;dhellmann&gt; we could use a tag in the governance repo to record it<br >
+13:47:48 &lt;ttx&gt; Do we need to be involved if they do stable branches ?<br >
+13:47:58 &lt;dhellmann&gt; not necessarily<br >
+13:48:15 &lt;dhellmann&gt; really, the scheduling of the releases is the trigger for me<br >
+13:48:41 &lt;dhellmann&gt; if they&rsquo;re on a 6 month schedule, I think it&rsquo;s safe to guide the liaison via documentation and help on irc<br >
+13:48:52 &lt;dhellmann&gt; if they&rsquo;re not, I think we should do it ourselves until we get it automated<br >
+13:49:19 &lt;dhellmann&gt; maybe your experience with the liaisons last cycle gives you a different opinion, though?<br >
+13:49:56 &lt;ttx&gt; I&rsquo;d say that for the same reason PTLs get semver wrong, they get PEP440-compliant versioning wrong too<br >
+13:50:28 &lt;dhellmann&gt; hmm, ok<br >
+13:50:30 &lt;ttx&gt; especially the subtleties of 2015.2.0b1 instead of 2015.2.b1 or 2015.2b1 or 2015.2.0.b1<br >
+13:50:41 &lt;dhellmann&gt; yeah, that&rsquo;s a good point<br >
+13:50:46 &lt;ttx&gt; so I think we need to own the tag<br >
+13:51:02 &lt;dhellmann&gt; ok, so does my email need to change to be about all projects?<br >
+13:51:16 &lt;ttx&gt; one fight at a time<br >
+13:51:29 &lt;dhellmann&gt; ++<br >
+13:51:47 &lt;ttx&gt; today&rsquo;s fight is more to convince PTLs where we already to tagging for their main stuff to give us libraries back<br >
+13:51:56 &lt;ttx&gt; s/to/do<br >
+13:52:23 &lt;ttx&gt; tomorrow&rsquo;s fight (which I&rsquo;m not sure we should do) is to go beyond the old set of integrated release and incubated<br >
+13:52:29 &lt;dhellmann&gt; ok, let&rsquo;s keep those conversations separate then<br >
+13:52:36 &lt;ttx&gt; which needs to be bigtented<br >
+13:52:59 &lt;dhellmann&gt; if we get this automated properly, it shouldn&rsquo;t actually be that much more work to approve tags for everything<br >
+13:53:28 &lt;ttx&gt; So I&rsquo;d say it needs to be opt-in for projects, and we need to be comfortable with the addition<br >
+13:53:47 &lt;ttx&gt; we can start the &ldquo;managed&rdquo; set using the old integrated+incubated<br >
+13:53:56 &lt;dhellmann&gt; and if they want to continue to do it, we can verify their version numbers if they ask?<br >
+13:54:02 &lt;ttx&gt; sure<br >
+13:54:12 &lt;dhellmann&gt; I think that&rsquo;s a good way to handle it for now<br >
+13:54:16 &lt;ttx&gt; as far as trafcking goes we do tracking only for managed stuff<br >
+13:54:31 &lt;ttx&gt; which leads to the next question<br >
+13:54:39 &lt;dhellmann&gt; do we need to define a tag for the governance repo to indicate release-managed or something?<br >
+13:55:26 &lt;ttx&gt; right. that is what I kind of wanted to avoid by aligning us with an already-existing bucket<br >
+13:55:33 &lt;ttx&gt; like &ldquo;it has stable branches&rdquo;<br >
+13:55:53 &lt;ttx&gt; also don&rsquo;t want it to become a new badge<br >
+13:56:10 &lt;dhellmann&gt; ah, I see<br >
+13:56:15 &lt;ttx&gt; basically we need to simplify the process faster than we add new projects<br >
+13:56:19 &lt;dhellmann&gt; right<br >
+13:56:26 &lt;ttx&gt; interesting challenge<br >
+13:56:29 &lt;dhellmann&gt; so let&rsquo;s not add a tag, and just keep track of a list ourselves somewhere for now<br >
+13:56:46 &lt;ttx&gt; the next question is whether we need to special-case servers<br >
+13:56:52 &lt;ttx&gt; vs. libraries<br >
+13:57:18 &lt;ttx&gt; currently we have that distinction in language (API servers, main deliverables, etc)<br >
+13:57:25 &lt;ttx&gt; but that doesn&rsquo;t exist in projects.yaml<br >
+13:57:29 &lt;ttx&gt; or anywhere else<br >
+13:57:35 &lt;ttx&gt; to map it to repositories<br >
+13:58:33 &lt;dhellmann&gt; what are you considering as a reason for needing to distinguish between them? knowing which script to run?<br >
+13:58:47 &lt;ttx&gt; I guess if we track all the &ldquo;managed&rdquo; work (included libraries as we handle tags for them) distinguishing netween libraries and servers is less needed<br >
+13:59:08 &lt;ttx&gt; I was trying to justify what ends up on the list of tracked things in that page<br >
+13:59:24 &lt;dhellmann&gt; and servers that have intermediate releases are sort of acting more like libraries in that sense, so those can probably use the same tools already<br >
+13:59:35 &lt;dhellmann&gt; change release_library.sh to release_semver.sh<br >
+<br >
+<i><b>Example:02</b></i><br >
+<br >
+13:18:42 &lt;ttx&gt; Plan A is to freeze that until post-release, secretly hoping requests will update their release anyway<br >
+13:18:53 &lt;ttx&gt; Plan B is to approve the requierments change now and -2 the syncs<br >
+13:18:54 &lt;dhellmann&gt; flaper87: we were trying to tell how much trouble the requests 2.8 release is causing us<br >
+13:19:26 &lt;ttx&gt; Benefit of Plan B is that the requirements (and syncs) will be in, in case we urgently need them at the last minute for a late respin to pass tests<br >
+13:19:31 &lt;flaper87&gt; mmh, my current problem is this: <a href="https://review.openstack.org/#/c/232462/">https://review.openstack.org/#/c/232462/</a><br >
+13:19:45 &lt;dhellmann&gt; whether plan A can work depends on the nature of the issue &#x2013; if it&rsquo;s a packaging problem they may not fix it, because of the vendoring upstream vs. separate packages downstream<br >
+13:19:49 &lt;flaper87&gt; That backport for liberty is blocked by this requests issue<br >
+13:19:53 &lt;ttx&gt; Drawback of Plan B is we need to catch the syncs before some trigger-happy PTL approved them<br >
+13:19:57 &lt;flaper87&gt; it&rsquo;s probably not critical and we could wait, FWIW<br >
+13:20:13 &lt;ttx&gt; but even in that case we could retag the RC tag rather than HEAD, so it&rsquo;s not a critical issue<br >
+13:20:24 &lt;dhellmann&gt; flaper87: is the problem related to a change in the behavior of requests?<br >
+13:20:35 &lt;flaper87&gt; yes<br >
+13:20:42 &lt;ttx&gt; in both plans we would add a note to the RElease notes saying requests 2.8.0 sucks<br >
+13:20:45 &lt;flaper87&gt; There&rsquo;s a GH issue for it<br >
+13:20:48 &lt;flaper87&gt; lemme look it up<br >
+13:21:06 &lt;flaper87&gt; but, tl;dr: it is not behaving the same way<br >
+13:21:08 &lt;dhellmann&gt; flaper87: ok, whenever requests comes up I hear about the packaging stuff so I wasn&rsquo;t sure if this was a real code change<br >
+13:21:27 &lt;ttx&gt; flaper87: any other gate (other than python-glanceclient) broken by that ?<br >
+13:21:28 &lt;flaper87&gt; to be precise, the vendored urllib3 in requests is not behaving as it should<br >
+13:21:52 &lt;flaper87&gt; ttx: yup<br >
+13:21:54 &lt;flaper87&gt; 2s<br >
+13:22:26 &lt;flaper87&gt; <a href="https://bugs.launchpad.net/ospurge/+bug/1503768">https://bugs.launchpad.net/ospurge/+bug/1503768</a> ospurge<br >
+13:22:26 &lt;openstack&gt; Launchpad bug 1503768 in python-glanceclient &ldquo;keystoneclient.exceptions.RequestTimeout with requests==2.8.0&rdquo; [Undecided,New] - Assigned to Flavio Percoco (flaper87)<br >
+13:22:26 &lt;ttx&gt; dhellmann: I think we can do plan B if we know when to catch the syncs.<br >
+13:22:52 &lt;flaper87&gt; but the exception in that bug is from keystoneclient so, I&rsquo;d expect keystoneclient to be broken by this too<br >
+13:23:16 &lt;ttx&gt; fungi: do you know when the requirements syncs are triggered ? Is it on merge or a periodic job ?<br >
+13:23:31 &lt;fungi&gt; on merge<br >
+13:23:32 &lt;flaper87&gt; I believe it&rsquo;s periodic<br >
+13:23:33 &lt;dhellmann&gt; ttx: I agree we can probably catch them. That won&rsquo;t solve flaper87&rsquo;s problem for glanceclient, but it will at least signal to distros that we have a known issue<br >
+13:23:37 &lt;flaper87&gt; u, I take that back<br >
+13:23:40 &lt;flaper87&gt; fungi: knows better<br >
+13:23:59 &lt;ttx&gt; flaper87: it&rsquo;s just that the merge is periodic<br >
+13:24:05 &lt;flaper87&gt; ttx: lol<br >
+13:24:09 &lt;fungi&gt; hah<br >
+13:24:20 &lt;fungi&gt; well, the constraints proposals are periodic<br >
+13:24:28 &lt;ttx&gt; fungi: does it take a while to trigger though, or is it relatively predictable ?<br >
+13:24:31 &lt;fungi&gt; (in an actual, non-joking sense)<br >
+13:24:44 &lt;flaper87&gt; dhellmann: if only we knew when the next requests release will go out, I think we could avoid this.<br >
+13:25:03 &lt;ttx&gt; I could approve it early tomorrow morning while the gate is calm and catch the syncs while most people are asleep<br >
+13:25:07 &lt;dhellmann&gt; flaper87: have you talked with sigmavirus24_awa about that? he&rsquo;s part of that team, isn&rsquo;t he?<br >
+13:25:07 &lt;flaper87&gt; to be safe, we should probably skip that versoin but the uncapped requirement should be enough to install the newest and be done with it<br >
+13:25:19 &lt;fungi&gt; ttx: it goes into the post pipeline, so if there&rsquo;s a resource starvation delaying post pipeline commits getting workers for their jobs then it will be however long that is plus something like 30 minutes for the job to run to completion<br >
+13:25:25 &lt;flaper87&gt; dhellmann: he&rsquo;s part of the team and I tried to reach out last week but TZs didn&rsquo;t work<br >
+13:25:25 &lt;ttx&gt; or we could even temporarily disable the stable/liberty sync<br >
+13:25:35 &lt;dhellmann&gt; flaper87: ack<br >
+13:25:41 &lt;ttx&gt; fungi: oh, that is why I thought it&rsquo;s periodic<br >
+13:25:53 &lt;ttx&gt; because when the gate is busy that can take quite a few hours<br >
+13:26:19 &lt;fungi&gt; i should also check that the job is currently running properly. i&rsquo;ll have a look at a recent job log for it<br >
+13:26:28 &lt;ttx&gt; one more reason to approve while gate is calm<br >
+13:26:48 &lt;ttx&gt; dhellmann: so.. plan A or plan B ?<br >
+13:26:50 &lt;dhellmann&gt; ttx: I do sort of like the idea of disabling the job for now, just to be safe, as long as we remember to turn it back on<br >
+13:27:01 * dimsum__ o/ (fashionably late to the party)<br >
+13:27:15 &lt;dhellmann&gt; ttx: B<br >
+13:27:26 &lt;dhellmann&gt; good morning, dims<br >
+13:27:41 &lt;ttx&gt; dhellmann: I think the risk profile is low enough to avoid the extra work in disabling/reenabling<br >
+13:27:58 &lt;flaper87&gt; #link <a href="https://github.com/kennethreitz/requests/issues/2811">https://github.com/kennethreitz/requests/issues/2811</a><br >
+13:27:59 &lt;ttx&gt; I&rsquo;ll approve it first thing tomorrow morning and block the syncs when they come through<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2016-02-26-14.01.log.html"><i><b>Example:02</b></i></a><br >
+14:32:21 &lt;dhellmann&gt; #topic priority reviews<br >
+14:32:30 &lt;dhellmann&gt; we have a handful of reviews for tool changes<br >
+14:32:40 &lt;dhellmann&gt; #link fix default handling for pypi link  <a href="https://review.openstack.org/285311">https://review.openstack.org/285311</a><br >
+14:32:40 &lt;dhellmann&gt; #link collapse pre-release notes into regular releases by default <a href="https://review.openstack.org/#/c/278761/">https://review.openstack.org/#/c/278761/</a><br >
+14:32:40 &lt;dhellmann&gt; #link support tarball names that don&rsquo;t match the repo name <a href="https://review.openstack.org/#/c/284870/">https://review.openstack.org/#/c/284870/</a><br >
+14:32:47 &lt;ttx&gt; <a href="https://review.openstack.org/#/c/284870/">https://review.openstack.org/#/c/284870/</a> fails tests<br >
+14:32:53 &lt;ttx&gt; I +2ed the other two<br >
+14:33:16 &lt;dhellmann&gt; I&rsquo;ll look, but I assumed the test failure was because it depends on the release that you just tagged<br >
+14:33:21 &lt;dhellmann&gt; if it&rsquo;s something else I&rsquo;ll fix it up<br >
+14:33:51 &lt;ttx&gt; yes, rechecking<br >
+14:34:08 &lt;dhellmann&gt; jinkx<br >
+14:34:31 &lt;dhellmann&gt; I think that&rsquo;s it for the formal agenda<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-12-04-14.00.log.html"><i><b>Example:02-b</b></i></a><br >
+4:59:34 &lt;ttx&gt; dhellmann: one does not simply.. bump a postjob priority<br >
+14:59:45 &lt;dhellmann&gt; oh, it&rsquo;s not just a configuration setting?<br >
+15:00:00 &lt;ttx&gt; nope, you may have to define a completely separate pipeline<br >
+15:00:05 &lt;dhellmann&gt; guh<br >
+15:00:14 &lt;ttx&gt; anyway, something we should probably look into<br >
+15:00:18 &lt;dhellmann&gt; yeah<br >
+15:00:22 &lt;ttx&gt; since we have grown that dependency which wasn&rsquo;t there before<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2018-01-12-15.00.log.html">Code09::Stable release maintenance</a><br >
+<i><b>Example:01</b></i><br >
+5:03:54 &lt;EmilienM&gt; do you want me to move it as independent for Pike and starting from Queens, move it along other tripleo deliverables?<br >
+15:04:13 &lt;dhellmann&gt; EmilienM : what&rsquo;s the plan for queens? will there be a queens release during queens, or is it going to come after, too?<br >
+15:04:16 &lt;ttx&gt; Well, we usually do not add to a release after the fact, and creating stable/pike could be construed as that<br >
+15:04:18 &lt;EmilienM&gt; (please note that I woke up for you this morning :-P)<br >
+15:04:18 &lt;smcginnis&gt; EmilienM: Would that work for whatever workflow they need. I have to be honest, I still don&rsquo;t quite understand that part.<br >
+15:04:36 &lt;dhellmann&gt; ttx: we&rsquo;ve said in the past it was ok to create stable branches after the fact because the names are an artifact of our testing setup<br >
+15:04:41 &lt;ttx&gt; so I think that&rsquo;s exceptional enough to warrant a discussion<br >
+15:04:55 &lt;EmilienM&gt; the long term plan is to release it as any other tripleo project<br >
+15:05:09 &lt;dhellmann&gt; but that we didn&rsquo;t want to include the deliverable on the pike page, which we can avoid here by moving the file to the _independent directory<br >
+<br >
+<br >
+<br >
+<a href="file:///Users/armstrong/research_data/meetings-log-html/openstack-release-log/releaseteam.2015-11-13-14.12.log.html"><i><b>Example:02</b></i></a><br >
+14:13:24 &lt;dhellmann&gt; - Propose stable team split (ttx)<br >
+14:13:32 &lt;ttx&gt; That was proposed. I just posted a summary<br >
+14:13:50 &lt;dhellmann&gt; cool, I haven&rsquo;t seen that yet but I&rsquo;ll look for it<br >
+14:13:55 &lt;ttx&gt; I think most of the objections are mostly about skepticism that this won&rsquo;t change a thing, rather than opposition to the change<br >
+14:14:07 &lt;dhellmann&gt; that was my impression, too<br >
+14:14:26 &lt;dhellmann&gt; how many of the folks chiming in are actually active on stable work?<br >
+14:14:28 &lt;ttx&gt; Personally I think the teams are already split in effect, we just diempower them by not giving them their own identity<br >
+14:14:41 &lt;ttx&gt; disempower*<br >
+14:14:50 &lt;dhellmann&gt; I agree<br >
+14:14:57 &lt;ttx&gt; so setting them up as their own team can only be positive<br >
+14:15:14 &lt;dhellmann&gt; we need to get the folks involved to actually set up a team, though :-)<br >
+14:15:18 &lt;ttx&gt; The only potential negative is if they start getting wild about what they have authority over<br >
+14:15:31 &lt;ttx&gt; like thinking they can unilaterally expand support periods<br >
+14:15:48 &lt;ttx&gt; I&rsquo;ll just make it clear that this is a cross-project decision and needs support from Infra and QA<br >
+14:16:03 &lt;dhellmann&gt; right<br >
+14:16:16 &lt;dhellmann&gt; ok, next up<br >
+14:16:19 &lt;dhellmann&gt; - follow-up to reno thread on ML with instructions for multi-repo deliverable projects (dhellmann)<br >
+14:16:21 &lt;ttx&gt; So Erno volunteered to lead, I&rsquo;m taking names<br >
+14:16:31 &lt;ttx&gt; I think we have enough people<br >
+14:16:41 &lt;ttx&gt; Coming from the stable liaisons ranks<br >
+14:16:56 &lt;dhellmann&gt; ah, right, Jokke_ did tell me he was going to be active on the work<br >
+14:17:05 &lt;ttx&gt; more deeply embedded in openstack dev than the first generation, which came from packagers<br >
+14:17:24 &lt;ttx&gt; (1st gen would be Daviey, apevec&#x2026;)<br >
+14:17:35 &lt;dhellmann&gt; right<br >
+14:17:45 &lt;ttx&gt; so rebooting the effort could actually prove a great move<br >
+14:17:46 &lt;dhellmann&gt; ihar has been very active on it, too<br >
+14:18:08 &lt;ttx&gt; right<br >
+14:18:09 &lt;dhellmann&gt; stable-maint 2.0 (note the semver major version bump)<br >
+<br >
+<br >
+</p>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="date">Created: 2020-08-09 Sun 17:12</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="http://orgmode.org">Org-mode</a> 9.3.6)</p>
+</div>
+</footer>
+</body>
+</html>
